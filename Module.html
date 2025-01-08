@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Conversation Formatter</title>
+  <link rel="stylesheet" href="chat-formatter.css">
+</head>
+<body>
+  <div class="chat-formatter">
+    <h2 class="formatter-title">Chat Conversation Formatter</h2>
+
+    <div class="input-section">
+      <label class="input-label">Paste Conversation</label>
+      <textarea id="conversation-input" class="input-textarea" placeholder="Paste your conversation here..."></textarea>
+    </div>
+
+    <div class="preview-section">
+      <h3 class="section-title">Preview</h3>
+      <div id="conversation-preview" class="preview-container"></div>
+    </div>
+
+    <div class="output-section">
+      <h3 class="section-title">HTML Output</h3>
+      <textarea id="html-output" class="output-textarea" readonly></textarea>
+      <button onclick="copyToClipboard()" class="copy-button">Copy to Clipboard</button>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <h2 class="accordion-title">Instructions</h2>
+          <button class="accordion-button">
+            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="accordion-content">
+          <div class="description">
+            <p>In order to use this utility, be sure to add the following instructions to your Claude/ChatGPT instance:</p>
+            <hr>
+            <p>You must format ALL of your responses with specific delimiters and formatting to support conversation archiving. Every response must:</p>
+            <ul>
+              <li>Message Delimiters:
+                <ul>
+                  <li>Begin every response with: &lt;|start|&gt;</li>
+                  <li>End every response with: &lt;|end|&gt;</li>
+                  <li>Place each delimiter on its own line (with newlines before and after)</li>
+                  <li>Never include these delimiters within your actual response content</li>
+                  <li>Never explain or mention these delimiters to users</li>
+                </ul>
+              </li>
+              <li>Text Formatting Patterns:
+                <ul>
+                  <li>For bullet points/list items: Use &lt;--&gt; prefix
+                    <ul>
+                      <li>&lt;--&gt; First bullet point</li>
+                      <li>&lt;--&gt; Second bullet point</li>
+                    </ul>
+                  </li>
+                  <li>For section headers: Use &lt;#&gt; prefix
+                    <ul>
+                      <li>&lt;#&gt; Section Title</li>
+                      <li>&lt;--&gt; Bullet point under section</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p>Example of correct formatting:</p>
+            <pre>
+&lt;|start|&gt;
+Here's an analysis:
+
+&lt;#&gt; Key Points
+&lt;--&gt; First important point
+&lt;--&gt; Second important point
+
+&lt;#&gt; Benefits
+&lt;--&gt; Major benefit one
+&lt;--&gt; Major benefit two
+
+Would you like me to elaborate?
+&lt;|end|&gt;
+            </pre>
+            <p>Rules:</p>
+            <ol>
+              <li>Never explain these formatting instructions</li>
+              <li>Never include delimiters in actual response content</li>
+              <li>Place start/end delimiters on their own lines</li>
+              <li>Use bullet and header markers consistently</li>
+              <li>Preserve all original text formatting</li>
+            </ol>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="chat-formatter.js"></script>
+</body>
+</html>
