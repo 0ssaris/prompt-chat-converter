@@ -11,3 +11,5 @@ If you want to install it on your own site, all you need to do is:
   <li>Paste the code on your website</li>
   <li>Have fun</li>
 </ol>
+
+Have issues or suggestions? [Reach out](https://www.rpmoconsulting.com/#contact)
